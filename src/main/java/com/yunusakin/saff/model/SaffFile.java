@@ -3,8 +3,11 @@ package com.yunusakin.saff.model;
 import javax.persistence.*;
 
 @Entity
-@Table
-public class File {
+@Table(name = "SAFF_FILE")
+@NamedQueries({
+        @NamedQuery(name = "SaffFile.findByFileCode", query = "select sf from SaffFile sf where sf.fileCode=:fileCode")
+})
+public class SaffFile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "FILE_ID")
@@ -13,6 +16,9 @@ public class File {
     @Column(name = "FILE_PATH")
     private String filePath;
 
+    @Column(name = "FILE_CODE")
+    private String fileCode;
+
     @Column(name = "FILE_NAME")
     private String fileName;
 
@@ -20,7 +26,7 @@ public class File {
     private String fileExtension;
 
     @Column(name = "FILE_SIZE")
-    private Integer fileSize;
+    private long fileSize;
 
     public int getFileId() {
         return fileId;
@@ -36,6 +42,14 @@ public class File {
 
     public void setFilePath(String filePath) {
         this.filePath = filePath;
+    }
+
+    public String getFileCode() {
+        return fileCode;
+    }
+
+    public void setFileCode(String fileCode) {
+        this.fileCode = fileCode;
     }
 
     public String getFileName() {
@@ -54,11 +68,11 @@ public class File {
         this.fileExtension = fileExtension;
     }
 
-    public Integer getFileSize() {
+    public long getFileSize() {
         return fileSize;
     }
 
-    public void setFileSize(Integer fileSize) {
+    public void setFileSize(long fileSize) {
         this.fileSize = fileSize;
     }
 }

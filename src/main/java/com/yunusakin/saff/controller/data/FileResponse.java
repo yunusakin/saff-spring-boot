@@ -3,26 +3,27 @@ package com.yunusakin.saff.controller.data;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.yunusakin.saff.model.File;
+import com.yunusakin.saff.model.SaffFile;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class FileResponse {
 
     @JsonProperty("info")
-    private File file;
+    private SaffFile saffFile;
 
     public FileResponse() {
     }
 
-    public FileResponse(File file) {
-        this.file = file;
+    public FileResponse(SaffFile saffFile) {
+        this.saffFile = saffFile;
     }
 
-    public File getFile() {
-        return file;
+    public SaffFile getFile() {
+        return saffFile;
     }
 
-    public void setFile(File file) {
-        this.file = file;
+    public void setFile(SaffFile saffFile) {
+        this.saffFile = saffFile;
     }
 }
