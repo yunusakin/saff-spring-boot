@@ -19,11 +19,11 @@ mvn clean install
 ```
 mvn spring-boot:run
 ```
-After run project you can see h2 database panel on this adress.
+After run project you'll see h2 database panel on following adress.
 ```
 http://localhost:8282/saff/h2-panel
 ```
-Also you can access swagger documentation ui on below link.
+Also you'll access swagger documentation ui on below link.
 ```
 http://localhost:8282/saff/swagger-ui.html
 ```
