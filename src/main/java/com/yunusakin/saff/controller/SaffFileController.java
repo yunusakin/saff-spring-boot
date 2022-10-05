@@ -92,27 +92,7 @@ public class SaffFileController {
             return this.returnErrorResponse(e);
         }
     }
-    
-    @DeleteMapping("/saff/delete/{fileCode}")
-    private ResponseEntity<Object> deleteFile(@PathVariable("fileCode") String fileCode) {
-        try {
-            Resource resource = SaffFileUtil.getFileAsResource(fileCode);
-            if (resource == null) {
-                return ResponseHandler.generateResponse(false, "File not found", HttpStatus.NOT_FOUND, null);
-            }
-            SaffFile saffFile = saffFileService.getByFileCode(fileCode);
-            if (saffFile == null) {
-                return ResponseHandler.generateResponse(false, "File not found", HttpStatus.NOT_FOUND, null);
-            }
-            FileUtils.deleteQuietly(resource.getFile());
-            saffFileService.delete(saffFile.getFileId());
-            return ResponseHandler.successResponse();
-        } catch (EmptyResultDataAccessException e) {
-            return ResponseHandler.generateResponse(true, "No Records Found", HttpStatus.NOT_FOUND, null);
-        } catch (Exception e) {
-            return this.returnErrorResponse(e);
-        }
-    }
+
     @DeleteMapping("/saff/delete/{fileCode}")
     private ResponseEntity<Object> deleteFile(@PathVariable("fileCode") String fileCode) {
         try {
