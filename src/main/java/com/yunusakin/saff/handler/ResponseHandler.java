@@ -22,4 +22,7 @@ public class ResponseHandler {
         map.put("status", HttpStatus.OK.value());
         return new ResponseEntity<Object>(map,HttpStatus.OK);
     }
+    public static ResponseEntity<Object> returnErrorResponse(Exception e){
+        return ResponseHandler.generateResponse(false,e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR, null);
+    }
 }

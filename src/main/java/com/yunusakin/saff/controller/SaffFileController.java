@@ -38,7 +38,7 @@ public class SaffFileController {
             List<FileInfoDTO> list = SaffMapper.convertList(saffFileList);
             return ResponseHandler.generateResponse(true,null, HttpStatus.OK, new AllFilesResponse(list));
         } catch (Exception e) {
-            return this.returnErrorResponse(e);
+            return ResponseHandler.returnErrorResponse (e);
         }
     }
 
@@ -70,7 +70,7 @@ public class SaffFileController {
             response.setFileCode(fileUploadPojo.getFileCode());
             return ResponseHandler.generateResponse(true, null, HttpStatus.OK, response);
         } catch (Exception e) {
-            return this.returnErrorResponse(e);
+            return ResponseHandler.returnErrorResponse (e);
         }
     }
 
@@ -89,7 +89,7 @@ public class SaffFileController {
 
             return ResponseHandler.generateResponse(true, null, HttpStatus.OK, new FileByFileCodeResponse(saffFile.getFileName(), saffFile.getFileSize() +" byte",fileData));
         } catch (Exception e) {
-            return this.returnErrorResponse(e);
+            return ResponseHandler.returnErrorResponse (e);
         }
     }
 
@@ -110,11 +110,7 @@ public class SaffFileController {
         } catch (EmptyResultDataAccessException e) {
             return ResponseHandler.generateResponse(true, "No Records Found", HttpStatus.NOT_FOUND, null);
         } catch (Exception e) {
-            return this.returnErrorResponse(e);
+            return ResponseHandler.returnErrorResponse (e);
         }
-    }
-
-    private ResponseEntity<Object> returnErrorResponse(Exception e){
-        return ResponseHandler.generateResponse(false,e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR, null);
     }
 }
